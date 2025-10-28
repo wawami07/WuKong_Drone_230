@@ -71,6 +71,9 @@ roslaunch pointpillars_ros tracker.launch
 
 
 ### 动态障碍物的识别测试说明
+
+WuKong_iros2025/src/identify_pointcloud/pointpillars_ros/tools/ros.py 里的best_1600_e80_s20.pth权重文件和测试的bag都在百度网盘的链接https://pan.baidu.com/s/1RdBN7qmTrH4fNyigD2ZyMw?pwd=8jwt里
+
 ```
 # 新建终端
 conda activate opempcdet
