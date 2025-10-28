@@ -15,18 +15,17 @@ Nvidia Jetson Orin + Ubuntu20.04 + CUDA 11.4 + cuDNN 8.6.0 + TensorRT 8.5.2.2
 运行PointPillars_ros包前需要安装一个openpcdet的conda环境，教程https://zhuanlan.zhihu.com/p/657200184 
 
 # 克隆项目
-https://github.com/wawami07/WuKong_iros2025.git
+```
+git clone https://github.com/wawami07/WuKong_iros2025.git
 cd WuKong_iros2025/
 conda activate openpcdet
 cd src/identify_pointcloud/pointpillars_ros
 # 安装PointPillars_ros包需要的依赖
 pip install -r requirements.txt
-
 python setup.py develop
-
 cd ../../../
-
 catkin_make
+```
 
 # 运行FAST_LIO重定位代码：
 需要将pcd点云地图放入/PCD文件下
@@ -47,9 +46,7 @@ roslaunch ego_planner run_in_exp.launch
 roslaunch ego_planner rviz.launch 
 
 在 "run_in_exp.launch" 中 "flight_type" ：
-
     1: use 3D Nav Goal to select goal 
-    
     2: use global waypoints below 
 
 # 运行动态障碍物避障代码：
