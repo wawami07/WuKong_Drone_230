@@ -75,7 +75,7 @@ roslaunch pointpillars_ros tracker.launch
 
 ### 动态障碍物的识别测试说明
 
-WuKong_Drone_230/src/identify_pointcloud/pointpillars_ros/tools/ros.py 里的best_1600_e80_s20.pth权重文件和测试的bag都在百度网盘的链接https://pan.baidu.com/s/1RdBN7qmTrH4fNyigD2ZyMw?pwd=8jwt 里，提取码: 8jwt
+WuKong_Drone_230/src/identify_pointcloud/pointpillars_ros/tools/ros.py 里的best_1600_e80_s20.pth权重文件和测试的bag都在百度网盘的链接 https://pan.baidu.com/s/1ZhPZ_iUAoAfdQIvbAvTt7g?pwd=v92f 里，提取码: v92f
 
 ```
 # 新建终端
