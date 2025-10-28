@@ -1,6 +1,6 @@
-# WuKong_iros2025: 面向动态环境的智能无人机自主导航系统
+# WuKong_Drone_230: 面向复杂环境的智能无人机自主导航系统框架
 
-**WuKong_iros2025** 是一个高性能的自主无人机解决方案，在著名的 **[Fast-Drone-250](https://github.com/ZJU-FAST-Lab/Fast-Drone-250)** 架构基础上深度演进。本项目通过集成前沿的感知、定位与规划算法，实现了在复杂动态场景下的全自主、高机动飞行。
+**WuKong_Drone_230** 是一个高性能的自主无人机解决方案，在著名的 **[Fast-Drone-250](https://github.com/ZJU-FAST-Lab/Fast-Drone-250)** 架构基础上改进。本项目通过集成前沿的感知、定位与规划算法，实现了在复杂动态场景下的全自主、高机动飞行。
 
 # 🧠 核心架构与技术栈
 
@@ -11,7 +11,9 @@
 
 ### 运行环境
 Nvidia Jetson Orin + Ubuntu20.04 + CUDA 11.4 + cuDNN 8.6.0 + TensorRT 8.5.2.2
-运行fast_lio前需要安装livox_ros_driver2驱动，请借鉴官网或网络上的教程
+
+运行FAST_LIO前需要安装livox_ros_driver2驱动，请借鉴官网或网络上的教程
+
 运行PointPillars_ros包前需要安装一个openpcdet的conda环境，教程https://zhuanlan.zhihu.com/p/657200184 
 
 ### 克隆项目
@@ -31,6 +33,7 @@ source devel/setup.bash
 
 ### 运行FAST_LIO重定位代码：
 ```
+（可以参考FAST_LIO_LOCALIZATION链接中的说明）
 # 需要将pcd点云地图放入/PCD文件下
 # 新建终端
 source devel/setup.bash
@@ -41,7 +44,7 @@ roslaunch fast_lio mapping_mid360.launch
 # 等待rviz开启后再新建终端继续执行：
 source devel/setup.bash
 roslaunch fast_lio localization_mid360.launch
-# 此时rviz中等待一会儿后会加载出先前放入/PCD的地图，然后rviz中选择2d选点，把起始点选中即可开始匹配
+# 此时rviz中等待一会儿后会加载出先前放入/PCD的地图，然后rviz中选择2D Nav Goal，把起始点选中即可开始匹配
 ```
 
 ### 运行 EGO-Planner-v2 规划代码：
@@ -64,7 +67,7 @@ source devel/setup.bash
 rosrun moving_obstacles moving_obstacles_iros
 # 新建终端
 source devel/setup.bash
-conda activate env
+conda activate openpcdet
 roslaunch pointpillars_ros tracker.launch
 ```
 
