@@ -16,6 +16,7 @@ Nvidia Jetson Orin + Ubuntu20.04 + CUDA 11.4 + cuDNN 8.6.0 + TensorRT 8.5.2.2
 
 ### 克隆项目
 ```
+# 新建终端
 git clone https://github.com/wawami07/WuKong_iros2025.git
 cd WuKong_iros2025/
 conda activate openpcdet
@@ -25,23 +26,31 @@ pip install -r requirements.txt
 python setup.py develop
 cd ../../../
 catkin_make
+source devel/setup.bash
 ```
 
 ### 运行FAST_LIO重定位代码：
 ```
 # 需要将pcd点云地图放入/PCD文件下
+# 新建终端
+source devel/setup.bash
 roslaunch livxo_ros_driver2 msg_MID360.launch
-# 另开一个终端
+# 新建终端
+source devel/setup.bash
 roslaunch fast_lio mapping_mid360.launch
-# 等待rviz开启后再另开终端继续执行：
+# 等待rviz开启后再新建终端继续执行：
+source devel/setup.bash
 roslaunch fast_lio localization_mid360.launch
 # 此时rviz中等待一会儿后会加载出先前放入/PCD的地图，然后rviz中选择2d选点，把起始点选中即可开始匹配
 ```
 
 ### 运行 EGO-Planner-v2 规划代码：
 ```
+# 新建终端
+source devel/setup.bash
 roslaunch ego_planner run_in_exp.launch 
-# 另开终端
+# 新建终端
+source devel/setup.bash
 roslaunch ego_planner rviz.launch 
 # 在 "run_in_exp.launch" 中 "flight_type" ：
 #     1: use 3D Nav Goal to select goal 
@@ -50,8 +59,10 @@ roslaunch ego_planner rviz.launch
 
 ### 运行动态障碍物避障代码：
 ```
+# 新建终端
+source devel/setup.bash
 rosrun moving_obstacles moving_obstacles_iros
-# 另开一个终端
+# 新建终端
 source devel/setup.bash
 conda activate env
 roslaunch pointpillars_ros tracker.launch
@@ -61,7 +72,8 @@ roslaunch pointpillars_ros tracker.launch
 
 ### 动态障碍物的识别测试说明
 ```
-conda activate env
+# 新建终端
+conda activate opempcdet
 source devel/setup.bash
 roslaunch pointpillars_ros pointpillars.launch
 # 另开终端

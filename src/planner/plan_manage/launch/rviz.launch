@@ -1,0 +1,5 @@
+<launch>
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ego_planner)/launch/default.rviz" required="true" /> -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ego_planner)/launch/include/single_drone.rviz" required="true" />
+
+</launch>

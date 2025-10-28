@@ -1,0 +1,168 @@
+<launch>
+  <arg name="map_size_x_"/>
+  <arg name="map_size_y_"/>
+  <arg name="map_size_z_"/>
+  <arg name="odom_topic" defalut="/Odom_high_freq"/>
+  <arg name="camera_pose_topic"/>
+  <arg name="depth_topic"/>
+  <arg name="cloud_topic"/>
+  <arg name="cx"/>
+  <arg name="cy"/>
+  <arg name="fx"/>
+  <arg name="fy"/>
+  <arg name="max_vel"/>
+  <arg name="max_acc"/>
+  <arg name="max_jer"/>
+  <arg name="planning_horizon"/>
+  <arg name="point_num"/>
+  <arg name="point0_x"/>
+  <arg name="point0_y"/>
+  <arg name="point0_z"/>
+  <arg name="point1_x"/>
+  <arg name="point1_y"/>
+  <arg name="point1_z"/>
+  <arg name="point2_x"/>
+  <arg name="point2_y"/>
+  <arg name="point2_z"/>
+  <arg name="point3_x"/>
+  <arg name="point3_y"/>
+  <arg name="point3_z"/>
+  <arg name="point4_x"/>
+  <arg name="point4_y"/>
+  <arg name="point4_z"/>
+  <arg name="point5_x"/>
+  <arg name="point5_y"/>
+  <arg name="point5_z"/>
+  <arg name="point6_x"/>
+  <arg name="point6_y"/>
+  <arg name="point6_z"/>
+
+  <arg name="point7_x"/>
+  <arg name="point7_y"/>
+  <arg name="point7_z"/>
+  <arg name="point8_x"/>
+  <arg name="point8_y"/>
+  <arg name="point8_z"/>
+  <arg name="point9_x"/>
+  <arg name="point9_y"/>
+  <arg name="point9_z"/>
+
+  <arg name="point10_x"/>
+  <arg name="point10_y"/>
+  <arg name="point10_z"/>
+  <arg name="point11_x"/>
+  <arg name="point11_y"/>
+  <arg name="point11_z"/>
+  <arg name="point12_x"/>
+  <arg name="point12_y"/>
+  <arg name="point12_z"/>
+  <arg name="point13_x"/>
+  <arg name="point13_y"/>
+  <arg name="point13_z"/>
+  <arg name="point14_x"/>
+  <arg name="point14_y"/>
+  <arg name="point14_z"/>
+  <arg name="point15_x"/>
+  <arg name="point15_y"/>
+  <arg name="point15_z"/>
+  <arg name="point16_x"/>
+  <arg name="point16_y"/>
+  <arg name="point16_z"/>
+
+  <arg name="flight_type"/>
+  <arg name="use_distinctive_trajs"/>
+  <arg name="use_multitopology_trajs"/>
+  <arg name="drone_id" deafult="0"/>
+  
+  <!-- main algorithm params -->
+    <include file="$(find ego_planner)/launch/advanced_param_in_exp.xml">
+        <arg name="drone_id" value="$(arg drone_id)"/>
+        <arg name="map_size_x_" value="$(arg map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg map_size_z)"/>
+        <arg name="odom_topic" value="$(arg odom_topic)"/>
+        <!-- camera pose: transform of camera frame in the world frame -->
+        <!-- depth topic: depth image, 640x480 by default -->
+        <!-- don't set cloud_topic if you already set these ones! -->
+        <arg name="camera_pose_topic" value="nouse1"/>
+        <arg name="depth_topic" value="nouse2"/>
+        <!-- topic of point cloud measurement, such as from LIDAR  -->
+        <!-- don't set camera pose and depth, if you already set this one! -->
+        <arg name="cloud_topic" value="/cloud_registered"/>
+        <!-- intrinsic params of the depth camera -->
+        <arg name="cx" value="323.3316345214844"/>
+        <arg name="cy" value="234.95498657226562"/>
+        <arg name="fx" value="384.39654541015625"/>
+        <arg name="fy" value="384.39654541015625"/>
+        <!-- maximum velocity and acceleration the drone will reach -->
+        <arg name="max_vel" value="0.5" />
+        <arg name="max_acc" value="1.0" />
+        <arg name="max_jer" value="1.0" />
+
+        <!--always set to 1.5 times grater than sensing horizen-->
+        <arg name="planning_horizon" value="6" />
+        <!-- <arg name="use_distinctive_trajs" value="false" /> -->
+        <arg name="use_multitopology_trajs" value="false" />
+        <!-- 1: use 3D Nav Goal to select goal  -->
+        <!-- 2: use global waypoints below  -->
+        <arg name="flight_type" value="2" />
+        <!-- global waypoints -->
+        <!-- It generates a piecewise min-snap traj passing all waypoints -->
+        <arg name="point_num" value="17" />
+         <arg name="point0_x" value="0.0" />
+        <arg name="point0_y" value="0.0" />
+        <arg name="point0_z" value="1.0" />
+        <arg name="point1_x" value="4.2" />
+        <arg name="point1_y" value="0.0" />
+        <arg name="point1_z" value="1.0" />
+        <arg name="point2_x" value="4.2" />
+        <arg name="point2_y" value="-3.3" />
+        <arg name="point2_z" value="1.0" />
+        <arg name="point3_x" value="0.0" />
+        <arg name="point3_y" value="-3.3" />
+        <arg name="point3_z" value="1.0" />
+        <arg name="point4_x" value="0.0" />
+        <arg name="point4_y" value="0.0" />
+        <arg name="point4_z" value="1.0" />
+        
+        <arg name="point5_x" value="4.2" />
+        <arg name="point5_y" value="0.0" />
+        <arg name="point5_z" value="1.0" />
+        <arg name="point6_x" value="4.2" />
+        <arg name="point6_y" value="-3.3" />
+        <arg name="point6_z" value="1.0" />
+        <arg name="point7_x" value="0.0" />
+        <arg name="point7_y" value="-3.3" />
+        <arg name="point7_z" value="1.0" />
+        <arg name="point8_x" value="0.0" />
+        <arg name="point8_y" value="0.0" />
+        <arg name="point8_z" value="1.0" />  
+
+        <arg name="point9_x" value="4.2" />
+        <arg name="point9_y" value="0.0" />
+        <arg name="point9_z" value="1.0" />
+        <arg name="point10_x" value="4.2" />
+        <arg name="point10_y" value="-3.3" />
+        <arg name="point10_z" value="1.0" />
+        <arg name="point11_x" value="0.0" />
+        <arg name="point11_y" value="-3.3" />
+        <arg name="point11_z" value="1.0" />
+        <arg name="point12_x" value="0.0" />
+        <arg name="point12_y" value="0.0" />
+        <arg name="point12_z" value="1.0" />
+
+        <arg name="point13_x" value="4.2" />
+        <arg name="point13_y" value="0.0" />
+        <arg name="point13_z" value="1.0" />
+        <arg name="point14_x" value="4.2" />
+        <arg name="point14_y" value="-3.3" />
+        <arg name="point14_z" value="1.0" />
+        <arg name="point15_x" value="0.0" />
+        <arg name="point15_y" value="-3.3" />
+        <arg name="point15_z" value="1.0" />
+        <arg name="point16_x" value="0.0" />
+        <arg name="point16_y" value="0.0" />
+        <arg name="point16_z" value="1.0" />
+    </include>
+
+</launch>
