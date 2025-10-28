@@ -1,6 +1,6 @@
-# WuKong: 面向动态环境的智能无人机自主导航系统
+# WuKong_iros2025: 面向动态环境的智能无人机自主导航系统
 
-**WuKong** 是一个高性能的自主无人机解决方案，在著名的 **[Fast-Drone-250](https://github.com/ZJU-FAST-Lab/Fast-Drone-250)** 架构基础上深度演进。本项目通过集成前沿的感知、定位与规划算法，实现了在复杂动态场景下的全自主、高机动飞行。
+**WuKong_iros2025** 是一个高性能的自主无人机解决方案，在著名的 **[Fast-Drone-250](https://github.com/ZJU-FAST-Lab/Fast-Drone-250)** 架构基础上深度演进。本项目通过集成前沿的感知、定位与规划算法，实现了在复杂动态场景下的全自主、高机动飞行。
 
 # 🧠 核心架构与技术栈
 
@@ -28,49 +28,45 @@ catkin_make
 ```
 
 # 运行FAST_LIO重定位代码：
-需要将pcd点云地图放入/PCD文件下
-
+```
+# 需要将pcd点云地图放入/PCD文件下
 roslaunch livxo_ros_driver2 msg_MID360.launch
-
+# 另开一个终端
 roslaunch fast_lio mapping_mid360.launch
-
-等待rviz开启后再继续执行：
-
+# 等待rviz开启后再另开终端继续执行：
 roslaunch fast_lio localization_mid360.launch
-
-此时rviz中等待一会儿后会加载出先前放入/PCD的地图，然后rviz中选择2d选点，把起始点选中即可开始匹配
+# 此时rviz中等待一会儿后会加载出先前放入/PCD的地图，然后rviz中选择2d选点，把起始点选中即可开始匹配
+```
 
 # 运行 EGO-Planner-v2 规划代码：
+```
 roslaunch ego_planner run_in_exp.launch 
-
+# 另开终端
 roslaunch ego_planner rviz.launch 
-
-在 "run_in_exp.launch" 中 "flight_type" ：
-    1: use 3D Nav Goal to select goal 
-    2: use global waypoints below 
+# 在 "run_in_exp.launch" 中 "flight_type" ：
+#     1: use 3D Nav Goal to select goal 
+#     2: use global waypoints below 
+```
 
 # 运行动态障碍物避障代码：
+```
 rosrun moving_obstacles moving_obstacles_iros
-
-另开一个终端
-
+# 另开一个终端
 source devel/setup.bash
-
 conda activate env
-
 roslaunch pointpillars_ros tracker.launch
+```
 
 
 
 # 动态障碍物的识别测试说明
+```
 conda activate env
-
 source devel/setup.bash
-
 roslaunch pointpillars_ros pointpillars.launch
-
+# 另开终端
 cd bag
-
 rosbag play dongtai.bag
+```
 
 
