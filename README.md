@@ -22,8 +22,11 @@ conda activate openpcdet
 cd src/identify_pointcloud/pointpillars_ros
 # 安装PointPillars_ros包需要的依赖
 pip install -r requirements.txt
+
 python setup.py develop
+
 cd ../../../
+
 catkin_make
 
 # 运行FAST_LIO重定位代码：
@@ -50,20 +53,26 @@ roslaunch ego_planner rviz.launch
 
 # 运行动态障碍物避障代码：
 rosrun moving_obstacles moving_obstacles_iros
+
 另开一个终端
+
 source devel/setup.bash
+
 conda activate env
+
 roslaunch pointpillars_ros tracker.launch
 
 
 
-## 测试说明
-# 动态障碍物的识别测试
+## 动态障碍物的识别测试说明
 conda activate env
+
 source devel/setup.bash
+
 roslaunch pointpillars_ros pointpillars.launch
 
 cd bag
+
 rosbag play dongtai.bag
 
 
